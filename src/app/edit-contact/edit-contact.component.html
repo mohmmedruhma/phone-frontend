@@ -1,0 +1,62 @@
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">Name</label>
+          <input type="text" class="form-control" 
+            formControlName="name" 
+            #name 
+            [(ngModel)] = "contact.name"/>
+        </div>
+        <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['name'].errors.required">
+            Contact Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Contact number </label>
+          <input class="form-control" type="number" 
+          formControlName="number" 
+          #number [(ngModel)] = "contact.number">/>
+        </div>
+        <div *ngIf="angForm.controls['number'].invalid && (angForm.controls['number'].dirty || angForm.controls['number'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['number'].errors.required">
+            Contact number is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Contact Job</label>
+          <input type="text" class="form-control" 
+            formControlName="job" 
+            #job
+            [(ngModel)] = "contact.job"
+          />
+        </div>
+        <div *ngIf="angForm.controls['job'].invalid && (angForm.controls['job'].dirty || angForm.controls['job'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['job'].errors.required">
+            Contact Job is required.
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4">Contact Location</label>
+            <input type="text" class="form-control" 
+              formControlName="location" 
+              #location
+              [(ngModel)] = "contact.location"
+            />
+          </div>
+          <div *ngIf="angForm.controls['location'].invalid && (angForm.controls['location'].dirty || angForm.controls['location'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['location'].errors.required">
+              Contact Location is required.
+            </div>
+          </div>
+        <div class="form-group">
+            
+          <button (click) = "updateContact(name.value, number.value, job.value,location.value)" type="submit" class="btn btn-primary"
+          [disabled]="angForm.invalid" >
+            Update Contact
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

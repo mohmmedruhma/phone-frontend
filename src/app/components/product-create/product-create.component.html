@@ -1,0 +1,47 @@
+<h2>signup for free</h2>
+<div class="card" style="width: 100%;">
+    <div class="card-body">
+      <form  ><!--  [formGroup]="signUpForm" -->
+        <div class="form-group">
+          <label for="name">name :</label>
+          <input type="text" class="form-control" id="name" 
+           #name required>
+          <!-- <small id="nameHelp" class="form-text text-muted">plese enter your full name .</small> -->
+          
+        </div>
+        <div class="form-group">
+          <label for="number">number :</label>
+          <input type="number" class="form-control" id="number"  #number required>
+          
+        </div>
+        <div class="form-group">
+            <label for="job">job :</label>
+            <input type="text" class="form-control" id="job" 
+            #job required>
+            <!-- <small id="nameHelp" class="form-text text-muted">plese enter your full name .</small> -->
+            
+           
+  
+          </div>
+          <div class="form-group">
+            <label for="location">location :</label>
+            <input type="text" class="form-control" id="location" 
+             #location required>
+            <!-- <small id="nameHelp" class="form-text text-muted">plese enter your full name .</small> -->
+            
+           
+  
+          </div>
+        
+        
+        <div class="form-group">
+          <input type="submit"   
+          class="form-control btn btn-primary" value="Add"
+          (click)="addContact(name.value,number.value,job.value,location.value)"/>
+          <span class="alert-danger">{{msg.value}}</span>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+  

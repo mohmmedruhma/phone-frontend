@@ -1,0 +1,36 @@
+<h2>Login Member</h2>
+<div class="card" style="width: 100%;">
+    <div class="card-body">
+      <form [formGroup]="loginForm"><!--  [formGroup]="loginForm" -->
+        <div class="form-group">
+          <label for="username">Userame :</label>
+          <input type="text" class="form-control" id="username" 
+          formControlName="username" #username required>
+          <!-- <small id="nameHelp" class="form-text text-muted">plese enter your full name .</small> -->
+          <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || 
+          loginForm.controls['username'].touched)" class="alert alert-info">
+          username is required.
+        </div> 
+        </div>
+        <div class="form-group">
+          <label for="password">Password :</label>
+          <input type="password" class="form-control" id="password" formControlName="password" #password required>
+          <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || 
+          loginForm.controls['password'].touched)" class="alert alert-info">
+           <span *ngIf="loginForm.controls['password'].errors.required">password is required</span>
+           <span *ngIf="loginForm.controls['password'].errors.minlength">password length must be min 5 at less</span>
+           <span *ngIf="loginForm.controls['password'].errors.pattern">password must be </span>
+        </div>
+        </div>
+        
+        <div class="form-group">
+          <input type="submit" [disabled]="loginForm.pristine || loginForm.invalid"  
+          class="form-control btn btn-primary" value="Login"
+          (click)="login(username.value,password.value)"/>
+          <span class="alert-danger">{{msg.value}}</span>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+  
